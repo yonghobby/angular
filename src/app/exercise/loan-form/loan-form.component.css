@@ -1,0 +1,88 @@
+.section-title {
+  margin: 5px;
+  font-size: 24px; 
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-section {
+  flex: 0 0 250px;
+  height: 400px;
+  margin-right: 20px;
+  padding: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 8px;
+  background-color: #fff; 
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.per-label {
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.form-section div {
+  margin-bottom: 15px;
+}
+
+/* Loan List Section Styles */
+.loan-list-section {
+  flex: 1;
+  margin-right: 20px;
+  background-color: #eaeaea;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.loan-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.loan-item p {
+  margin: 5px 0;
+}
+
+/* Income Section Styles */
+.income-section {
+  flex: 0 0 400px;
+  padding: 15px;
+  background-color: #dff0d8;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.income-section h3 {
+  margin: 0;
+  color: #3c763d;
+}
+
+/* Button Styles */
+.p-button {
+  margin-top: 10px;
+}
+
+.p-button-secondary {
+  margin-left: 20px;
+}

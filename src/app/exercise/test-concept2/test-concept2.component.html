@@ -1,0 +1,77 @@
+<div class="p-grid">
+  <!-- Panel ซ้าย -->
+  <div class="p-col-7">
+    <p-panel header="รายการที่เลือก">
+      <div class="table-header">
+        <span>รายการที่เลือก</span>
+        <span>หมายเหตุ</span>
+        <span>ตัวเลือกเพิ่มเติม</span>
+      </div>
+      <ng-container *ngIf="selectedBusinesses.length > 0; else noData">
+        <div class="game-list">
+          <div *ngFor="let business of selectedBusinesses; let i = index" class="game-item">
+            <!-- ชื่อรายการ -->
+            <span>{{ business.name }}</span>
+
+            <!-- ช่องหมายเหตุและ dropdown อยู่ข้างกัน -->
+            <div class="remark-option-container">
+              <!-- ช่องหมายเหตุ -->
+              <div class="remark-container">
+                <input type="text" pInputText [(ngModel)]="business.remark" 
+                       [ngClass]="{'error-border': business.remarkError}" 
+                       placeholder="หมายเหตุ" 
+                       (ngModelChange)="onRemarkChange(business)">
+                <small *ngIf="business.remarkError" class="error-message">{{ business.remarkError }}</small>
+              </div>
+
+              <!-- Dropdown -->
+              <div class="option-container">
+                <p-dropdown [(ngModel)]="business.option" [options]="dropdownOptions" placeholder="เลือกตัวเลือก"
+                            (ngModelChange)="onOptionChange(business)">
+                </p-dropdown>
+                <small *ngIf="business.optionError" class="error-message">{{ business.optionError }}</small>
+              </div>
+            </div>
+
+            <!-- ปุ่มควบคุม แสดงเฉพาะใน item หลัก -->
+            <div *ngIf="!business.parentId" class="control-buttons">
+              <button pButton icon="pi pi-arrow-up" class="p-button-text" (click)="moveToTop(i)"></button>
+              <button pButton icon="pi pi-arrow-right" class="p-button-text" (click)="moveToRight(i)"></button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noData>
+        <div class="no-data-container">
+          <p>ไม่มีข้อมูล</p>
+        </div>
+      </ng-template>
+    </p-panel>
+  </div>
+
+  <!-- Panel ขวา -->
+  <div class="p-col-5">
+    <p-panel header="รายการทั้งหมด">
+      <div class="game-all">
+        <div *ngFor="let business of allBusinesses; let i = index">
+          <!-- กรอบหลักสำหรับ item หลัก -->
+          <div class="game-item">
+            <button pButton icon="pi pi-arrow-left" class="p-button-text" (click)="moveToLeft(i)"></button>
+            {{ business.name }}
+            <button pButton icon="pi pi-arrow-down" *ngIf="!business.isExpanded" class="p-button-text" (click)="toggleExpand(i)"></button>
+            <button pButton icon="pi pi-arrow-up" *ngIf="business.isExpanded" class="p-button-text" (click)="toggleExpand(i)"></button>
+          </div>
+  
+          <!-- กรอบย่อยที่แยกออกจาก item หลัก -->
+          <div *ngIf="business.isExpanded" class="sub-items-container">
+            <div *ngFor="let part of business.parts; let j = index" class="sub-item">
+              <span>{{ part }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-panel>
+  </div>
+</div>
+
+<button (click)="onSubmit()">Submit</button>

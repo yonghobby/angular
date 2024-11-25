@@ -1,0 +1,60 @@
+<div class="p-grid">
+  <!-- Panel ซ้าย -->
+  <div class="p-col-7">
+    <p-panel header="รายการที่เลือก">
+      <div class="table-header">
+        <span>รายการที่เลือก</span>
+        <span>PC</span>
+        <span>PS5/XBSX</span>
+        <span>Switch</span>
+        <span>หมายเหตุ</span>
+        <span>ตัวเลือกเพิ่มเติม</span>
+      </div>
+      <ng-container *ngIf="selectedGames.length > 0; else noData">
+        <div cdkDropList (cdkDropListDropped)="onDrop($event)" class="game-list">
+          <div *ngFor="let game of selectedGames; let i = index" class="game-item" cdkDrag>
+            <span>{{ game.name }}</span>
+            <p-checkbox [(ngModel)]="game.isPc" [binary]="true"></p-checkbox>
+            <p-checkbox [(ngModel)]="game.isPS5XBSX" [binary]="true"></p-checkbox>
+            <p-checkbox [(ngModel)]="game.isNSwitch" [binary]="true"></p-checkbox>
+            
+            <!-- ช่องหมายเหตุ -->
+            <div class="remark-container">
+              <input type="text" pInputText [(ngModel)]="game.remark" 
+                     [ngClass]="{'error-border': game.remarkError}" 
+                     placeholder="หมายเหตุ" 
+                     (ngModelChange)="onRemarkChange(game)">
+              <small *ngIf="game.remarkError" class="error-message">{{ game.remarkError }}</small>
+            </div>
+
+            <!-- Dropdown -->
+            <div class="option-container">
+              <p-dropdown [(ngModel)]="game.option" [options]="dropdownOptions" placeholder="เลือกตัวเลือก"
+                          (ngModelChange)="onOptionChange(game)">
+              </p-dropdown>
+              <small *ngIf="game.optionError" class="error-message">{{ game.optionError }}</small>
+            </div>
+
+            <button pButton icon="pi pi-arrow-up" class="p-button-text" (click)="moveToTop(i)"></button>
+            <button pButton icon="pi pi-arrow-right" class="p-button-text" (click)="moveToRight(i)"></button>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #noData>
+        <p>ไม่มีข้อมูล</p>
+      </ng-template>
+    </p-panel>
+  </div>
+
+  <!-- Panel ขวา -->
+  <div class="p-col-5">
+    <p-panel header="รายการทั้งหมด">
+      <div *ngFor="let game of allGames; let i = index" class="game-item">
+        <button pButton icon="pi pi-arrow-left" class="p-button-text" (click)="moveToLeft(i)"></button>
+        {{ game.name }}
+      </div>
+    </p-panel>
+  </div>
+</div>
+
+<button (click)="onSubmit()">Submit</button>

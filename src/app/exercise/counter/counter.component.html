@@ -1,0 +1,11 @@
+<div class="counter-container">
+  <h1>Total: {{ calculateTotal() }}</h1>
+  <p-button label="Add Counter" (click)="addCounter()"></p-button>
+
+  <div *ngFor="let counter of counters; let i = index" class="counter">
+    <p-button icon="pi pi-minus" (click)="decrement(i)" [disabled]="counter === 0"/>
+    <p-inputNumber [(ngModel)]="counters[i]" [min]="0" [disabled]="true"/>
+    <p-button icon="pi pi-plus" (click)="increment(i)"/>
+    <p-button label="Delete" (click)="removeCounter(i)"/>
+  </div>
+</div>

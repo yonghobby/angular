@@ -1,0 +1,120 @@
+.p-grid {
+  display: grid;
+  grid-template-columns: 7fr 3fr; /* คอลัมน์ซ้าย 7 ส่วน ขวา 3 ส่วน */
+  gap: 1rem;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 0.6fr 0.6fr 0.6fr 1.5fr 0.5fr;
+  align-items: center;
+  font-weight: bold;
+  background-color: #e0e0e0;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.game-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
+  gap: 0.5rem;
+}
+
+/* กำหนดการจัดเรียงแบบแนวนอนให้กับ remark และ dropdown */
+.remark-option-container {
+  display: flex;
+  gap: 0.5rem; /* ระยะห่างระหว่างหมายเหตุและตัวเลือก */
+  flex: 1;
+  align-items: center;
+}
+
+.game-item > span {
+  flex: 2;
+  font-size: 0.9rem;
+}
+
+.remark-container, .option-container {
+  flex: 1;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.control-buttons button {
+  margin-left: 0.5rem;
+  transform: scale(0.8);
+}
+
+input[type="text"] {
+  width: 100%;
+  font-size: 0.85rem;
+}
+
+.error-border {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 70%;
+  left: 0;
+  margin-top: 0.25rem;
+}
+
+button {
+  transform: scale(0.8);
+}
+
+.p-col-5 {
+  padding-right: 0.5rem;
+}
+
+.p-col-7 {
+  padding-left: 0.5rem;
+}
+
+.sub-items-container {
+  margin-left: 2rem; /* ระยะห่างจาก item หลัก */
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid #d0d0d0;
+}
+
+.sub-item {
+  border: 1px solid #c0c0c0;
+  border-radius: 4px;
+  padding: 0.5rem;
+  background-color: #f1f1f1;
+  margin: 0.25rem 0; /* ระยะห่างระหว่าง item ย่อย */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.game-list {
+  height: 400px;
+  overflow-y: auto;  /* แสดง scroll bar */
+}
+
+.no-data-container {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.game-all {
+  height: 470px;  
+  overflow-y: auto; 
+}
+
+

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="form-section">
+    <h2 class="section-title">Form</h2>
+    <form (ngSubmit)="calculateInterest()">
+      <div>
+        <input type="text" pInputText [(ngModel)]="borrowerName" maxlength="100" name="borrowerName" placeholder="Borrower's Name"/>
+      </div>
+      <div>
+        <p-inputNumber [(ngModel)]="principal" [min]="100000" [max]="10000000" name="principal" placeholder="Principal"/>
+      </div>
+      <div class="form-row">
+        <p-inputNumber [(ngModel)]="interestRate" [min]="5" [max]="25" [step]="0.1" [maxFractionDigits]="1" name="interestRate" placeholder="Interest Rate (%)"/>
+        <span class="per-label">per</span>
+        <p-dropdown 
+          [options]="types" 
+          [(ngModel)]="selectedTypes" 
+          optionLabel="label" 
+          placeholder="Select a types"
+          name="selectedTypes"/>
+      </div>
+      <div>
+        <p-inputNumber [(ngModel)]="noOfYears" [min]="1" [max]="10" name="noOfYears" placeholder="No. of Years"/>
+      </div>
+      <div>
+        <p-button label="Save" type="submit"/>
+        <p-button label="Cancel" type="button" (click)="resetForm()" class="p-button-secondary"/>
+      </div>
+    </form>
+  </div>
+
+  
+  <div class="loan-list-section">
+    <h2 class="section-title">Loan List</h2>
+    <div *ngFor="let loan of loans; let i = index" class="loan-item">
+      <p><strong>{{ loan.borrowerName }}</strong></p>
+      <p>Principal: {{ loan.principal| number  }}</p>
+      <p>Interest Rate: {{ loan.interestRate }}% per {{ loan.interestType }}</p>
+      <p>No. of Years: {{ loan.noOfYears }}</p>
+      <p>Total Interest: {{ loan.totalInterest | number }}</p>
+      <p-button label="Close Loan" (click)="removeLoan(i)"></p-button>
+    </div>
+  </div>
+
+  
+  <div class="income-section">
+    <h2 class="section-title">Expected Interest Income</h2>
+    <h3>{{ expectedInterestIncome | number:'1.2-2' }}</h3>
+  </div>
+</div>

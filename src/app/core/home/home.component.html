@@ -1,0 +1,9 @@
+<div style="padding: 4px">
+    <p-button
+        [styleClass]="menu.id === currentPageNumber ? 'p-button-success' : 'p-button-primary'"
+        *ngFor="let menu of menuList; let i = index"
+        [label]="menu.name"
+        class="btnMenu"
+        (onClick)="onClickChangeMenu(menu.id)"
+    ></p-button>
+</div>

@@ -1,0 +1,20 @@
+
+<div class="map-outer-container">
+    <div #mapContainer class="mapContainer">
+ 
+    </div>
+</div>
+<div class="facility-container" >
+    <!-- <div [ngClass]="i === selectedCityIndex ? 'item-city-selected':'item-city'" *ngFor="let result of listspatialQueryResult; let i = index" (click)="onSelectedCity(result,i)">
+        <span>{{result.areaname}}</span>
+    </div>
+    <span *ngIf="listspatialQueryResult.length === 0">No Data</span> -->
+    <div *ngIf="facilityNames.length > 0">
+    <ul>
+      <li *ngFor="let name of facilityNames" [attr.data-abbreviation]="name" (click)="onRowClick(name)">
+        {{ name }}
+      </li>
+    </ul>
+  </div>
+  <span *ngIf="facilityNames.length === 0">No Data</span>
+</div>

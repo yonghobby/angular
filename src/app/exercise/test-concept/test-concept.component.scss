@@ -1,0 +1,101 @@
+.p-grid {
+  display: grid;
+  grid-template-columns: 7fr 3fr; /* คอลัมน์ซ้าย 7 ส่วน ขวา 3 ส่วน */
+  gap: 1rem;
+}
+
+.p-panel {
+  padding: 1rem;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+.content-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.table-header, .game-item {
+  display: grid;
+  grid-template-columns: 2fr 0.6fr 0.6fr 0.6fr 1.5fr 0.5fr; /* กำหนดความกว้างให้ตรงกัน */
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.table-header {
+  font-weight: bold;
+  background-color: #e0e0e0;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+}
+
+.game-item {
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 2fr 0.6fr 0.6fr 0.6fr 2fr 0.5fr; /* กำหนดการจัดตำแหน่งให้ตรงกับ header */
+}
+
+.game-item > span:first-child {
+  margin-right: 0.5rem;
+  font-size: 0.9rem; /* ลดขนาดตัวอักษร */
+}
+
+input[type="text"] {
+  width: 100%;
+  font-size: 0.85rem; /* ลดขนาดฟอนต์ของช่องข้อความ */
+}
+
+p-checkbox {
+  margin: 0 0.25rem;
+  transform: scale(0.9); /* ลดขนาด checkbox */
+}
+
+button {
+  margin-left: 0.5rem;
+  transform: scale(0.8); /* ลดขนาดปุ่ม */
+}
+
+.p-col-5 {
+  padding-right: 0.5rem; /* ลดพื้นที่ในคอลัมน์ขวา */
+}
+
+.p-col-7 {
+  padding-left: 0.5rem; /* ลดพื้นที่ในคอลัมน์ซ้าย */
+}
+
+.game-item button {
+  margin-right: 1rem; /* ย้ายปุ่มไปข้างหน้าชื่อเกม */
+  transform: scale(0.8);
+}
+
+.remark-container {
+  position: relative;
+  padding-bottom: 1rem; /* เผื่อที่ว่างสำหรับข้อความเตือน */
+}
+
+.option-container {
+  position: relative;
+  padding-bottom: 1rem; 
+}
+
+.error-border {
+  border: 1px solid red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 70%; /* ตำแหน่งข้อความใต้ช่องหมายเหตุ */
+  left: 0;
+  margin-top: 0.25rem;
+}
+
+
+

@@ -1,0 +1,43 @@
+<div #mapPanel style="height: 100vh;"></div>
+
+<form>
+  <h2>{{ formTitle }}</h2>
+  <div class="p-field">
+    <label for="latitude">Latitude:</label>
+    <p-inputNumber 
+      [(ngModel)]="latitude" 
+      id="latitude" 
+      name="latitude" 
+      mode="decimal" 
+      [minFractionDigits]="0" 
+      [maxFractionDigits]="6" 
+      [ngClass]="{'input-error': latitude && !checkCoordinates(latitude, longitude)}">
+    </p-inputNumber>
+  </div>
+
+  <div class="p-field">
+    <label for="longitude">Longitude:</label>
+    <p-inputNumber 
+      [(ngModel)]="longitude" 
+      id="longitude" 
+      name="longitude" 
+      mode="decimal" 
+      [minFractionDigits]="0" 
+      [maxFractionDigits]="6" 
+      [ngClass]="{'input-error': longitude && !checkCoordinates(latitude, longitude)}">
+    </p-inputNumber>
+  </div>
+
+  <p-button 
+    type="button" 
+    label="Locate" 
+    (click)="onLocate()" 
+    [disabled]="!latitude || !longitude || !checkCoordinates(latitude, longitude)">
+  </p-button>
+</form>
+
+<!-- แสดง latitude และ longitude -->
+<div *ngIf="latitude !== undefined && longitude !== undefined">
+  <p>Latitude: {{ latitude }}</p>
+  <p>Longitude: {{ longitude }}</p>
+</div>

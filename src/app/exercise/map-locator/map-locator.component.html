@@ -1,0 +1,81 @@
+<div class="container">
+  <div #mapPanel class="map" style="height: 100vh;"></div>
+
+  <p-card [header]="formTitle" styleClass="form">
+    <form>
+      <div class="p-field">
+        <p-button 
+          label="Locator" 
+          icon="pi pi-compass" 
+          (click)="setMode('coordinates')" 
+          styleClass="p-button-outlined"
+          [disabled]="mode === 'coordinates'"
+        ></p-button>
+
+        <p-button 
+          label="Distance" 
+          icon="pi pi-map-marker" 
+          (click)="setMode('distance')" 
+          styleClass="p-button-outlined"
+          [disabled]="mode === 'distance'"
+        ></p-button>
+
+        <p-button 
+          label="Area" 
+          icon="pi pi-map" 
+          (click)="setMode('area')" 
+          styleClass="p-button-outlined"
+          [disabled]="mode === 'area'"
+        ></p-button>
+      </div>
+
+      <div *ngIf="mode === 'coordinates'" class="p-field">
+        <label>
+          <i class="pi pi-map-marker"></i> Latitude:
+        </label>
+        <p>{{ latitudeClick }}</p>
+      
+        <label>
+          <i class="pi pi-map-marker"></i> Longitude:
+        </label>
+        <p>{{ longitudeClick }}</p>
+      
+        <label>
+          <i class="pi pi-compass"></i> Latitude:
+        </label>
+        <p>{{ latitudeMouse }}</p>
+      
+        <label>
+          <i class="pi pi-compass"></i> Longitude:
+        </label>
+        <p>{{ longitudeMouse }}</p>
+      </div>
+
+      <div *ngIf="mode === 'distance'" class="p-field">
+        <label>Unit:</label>
+        <p-dropdown 
+          [options]="distanceUnits" 
+          [(ngModel)]="selectedDistanceUnit" 
+          (onChange)="onUnitChange($event)"
+          placeholder="Select a unit"
+        ></p-dropdown>
+        <label>Distance:</label>
+        <p>{{ distanceResult | number: '1.0-2' }} {{ selectedDistanceUnit }}</p>
+      </div>
+
+      <div *ngIf="mode === 'area'" class="p-field">
+        <label>Unit:</label>
+        <p-dropdown 
+          [options]="areaUnits" 
+          [(ngModel)]="selectedAreaUnit" 
+          (onChange)="onUnitChange($event)"
+          placeholder="Select a unit"
+        ></p-dropdown>
+        <label>Area:</label>
+        <p>{{ areaResult }} 
+          <span *ngIf="selectedAreaUnit !== 'rai'">{{ selectedAreaUnit }}</span>
+        </p>
+      </div>
+    </form>
+  </p-card>
+</div>

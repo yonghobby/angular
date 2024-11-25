@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>To-Do List</h2>
+  <div class="input-group">
+    <input type="text" [(ngModel)]="newTodo" pInputText placeholder="Enter To-Do" maxlength="100" required />
+    <p-button label="Add" (click)="addTodo()"></p-button>
+  </div>
+
+  <ul>
+    <li *ngFor="let todo of todos; let i = index" 
+        (click)="toggleComplete(i)" 
+        [ngClass]="{'completed': todo.completed}"
+        class="todo-item">
+      {{ todo.text }}
+      <p-button icon="pi pi-trash" class="p-button-danger delete-button" (click)="deleteTodo(i); $event.stopPropagation()"></p-button>
+    </li>
+  </ul>
+</div>
